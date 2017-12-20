@@ -26,7 +26,7 @@ class Datagram:
         self.addr = addr
         self.DATA = data
         if get_domain_name(data) in self.black_list:
-            self.transport.sendto(self.id + b'Restricted Domain name')
+            self.transport.sendto(self.id + b'Restricted Domain name', self.addr)
             return
         if self.data in self.remotes.keys():
             self.transport.sendto(self.id + self.remotes[self.data], self.addr)
